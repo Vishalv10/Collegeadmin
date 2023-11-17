@@ -1,0 +1,121 @@
+{% extends "nav1.html" %}
+{% block content %}
+{% load static %}
+
+
+<style>
+body {
+font-family: 'Arial', sans-serif;
+background-image: url('{% static "images/pexels-idriss-meliani-2982449.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+
+margin: 0;
+padding: 0;
+}
+        
+nav.navbar {
+background-color: #ffffff;
+border-bottom: 1px solid #ddd;
+}
+        
+.navbar-brand {
+color: #007bff;
+}
+        
+.navbar-toggler {
+border-color: #007bff;
+}
+        
+.navbar-toggler-icon {
+background-color: #007bff;
+}
+        
+.navbar-nav.ml-auto {
+margin-right: 20px;
+}
+        
+.nav-item {
+margin-left: 15px;
+}
+
+a.nav-link {
+color: #007bff;
+}
+        
+a.nav-link:hover {
+color: #0056b3;
+}
+        
+.menu-link {
+text-decoration: none;
+color: lightblue;
+display: block;
+text-align: center;
+margin: 20px;
+}
+        
+.menu-link img {
+max-width: 150px;
+border-radius: 10px;
+}
+        
+.left-menu {
+text-align: left;
+float: left;
+margin-left: 20px;
+
+                }
+        
+.right-menu {
+text-align: right;
+float: right;
+margin-right: 20px;
+}
+.welcome-message {
+margin-top: 20px;
+text-align: center;
+font-size: 30px;
+color: black;
+                }
+            </style>
+        
+            <div class="welcome-message">
+                Welcome, {{ request.user.username }}!
+            </div>
+        
+            <div class="left-menu">
+                <a href="/addcourse" class="menu-link">
+                    <img src="{% static 'images/course.jpg' %}" alt="Add Course"> ADD COURSE 
+                </a>
+                <br><br><br>
+                <a href="/studentdetails" class="menu-link"> 
+                    <img src="{% static 'images/student.png' %}" alt="Student Details"> STUDENT DETAILS 
+                </a> 
+            </div>
+        
+            <div class="right-menu">
+                <a href="/addstudent" class="menu-link"> 
+                    <img src="{% static 'images/student1.png' %}" alt="Add Student"> ADD STUDENT 
+                </a> 
+              <br><br><br>
+                <a href="{% url 'teacherdetails' %}" class="menu-link"> 
+                    <img src="{% static 'images/teacher.png' %}" alt="Show Teacher"> SHOW TEACHER 
+                </a> 
+ </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+

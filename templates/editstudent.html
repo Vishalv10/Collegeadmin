@@ -1,0 +1,78 @@
+{% extends "nav1.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-top: 20px;
+    }
+
+    form {
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],[type="number"],[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<h2>Edit Student Information</h2>
+
+<form action="{% url 'updatestudent' student.id %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Enter Name" value="{{ student.student_name }}">
+    <input type="text" name="address" placeholder="Address" value="{{ student.address }}">
+    <input type="number" name="age" placeholder="Enter Age" value="{{ student.age }}">
+    <input type="date" name="date" placeholder="Date" value="{{ student.joining_date |date:"Y-m-d" }}">
+    <select name="sel">
+        {% for c in courses %}
+            <option value="{{ c.id }}"
+                {% if c.id == student.course.id %}selected{% endif %}>
+                {{ c.course_name }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Update</button>
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,107 @@
+{% extends "nav2.html" %}
+{% block content %}
+{% load static %}
+
+            <style>
+                body {
+                    font-family: 'Arial', sans-serif;
+                    background-image: url('{% static "images/pexels-andrea-piacquadio-3764402.jpg" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+                    
+                    margin: 0;
+                    padding: 0;
+                }
+        
+                nav.navbar {
+                    background-color: #ffffff;
+                    border-bottom: 1px solid #ddd;
+                }
+        
+                .navbar-brand {
+                    color: #007bff;
+                }
+        
+                .navbar-toggler {
+                    border-color: #007bff;
+                }
+        
+                .navbar-toggler-icon {
+                    background-color: #007bff;
+                }
+        
+                .navbar-nav.ml-auto {
+                    margin-right: 20px;
+                }
+        
+                .nav-item {
+                    margin-left: 15px;
+                }
+        
+                a.nav-link {
+                    color: #007bff;
+                }
+        
+                a.nav-link:hover {
+                    color: #0056b3;
+                }
+        
+                .menu-link {
+                    text-decoration: none;
+                    color: #333;
+                    display: block;
+                    text-align: center;
+                    margin: 20px;
+                }
+        
+                .menu-link img {
+                    max-width: 150px;
+                    border-radius: 10px;
+                }
+        
+                .left-menu {
+                    text-align: left;
+                    float: left;
+                    margin-left: 20px;
+
+                }
+        
+                .right-menu {
+                    text-align: right;
+                    float: right;
+                    margin-right: 20px;
+                }
+                .welcome-message {
+                    margin-top: 20px;
+                    text-align: center;
+                    font-size: 30px;
+                    color: black;
+                }
+            
+            </style>
+        
+            <div class="welcome-message">
+                Welcome, {{ request.user.username }}!
+            </div>
+        
+            <div class="left-menu">
+                <br><br><br>
+                <a href="{% url 'showteacherdetails' %}" class="menu-link"> 
+                    <img src="{% static 'images/teacher1.jpg' %}" alt="Student Details"> TEACHER DETAILS 
+                </a> 
+            </div>
+        
+            <div class="right-menu">
+                <br><br><br>
+                <a href="{% url 'editteacher' teacher.id %}" class="menu-link"> 
+                    <img src="{% static 'images/teacher.png' %}" alt="Show Teacher"> EDIT TEACHER 
+                </a> 
+            </div>
+        
+
+
+
+
+{% endblock %}
+
+

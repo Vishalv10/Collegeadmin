@@ -1,0 +1,99 @@
+{% extends "nav1.html" %}
+{% block content %}
+{% load static %}
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    img {
+        max-width: 100px;
+        border-radius: 5px;
+    }
+
+    td.actions a {
+        color: #007bff;
+        text-decoration: none;
+        margin-right: 5px;
+    }
+
+    td.actions a:hover {
+        color: #0056b3;
+    }
+</style>
+
+<h2>Teacher Details</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Contact Number</th>
+            <th>Course</th>
+            <th>Photo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for teacher in teachers %}
+            <tr>
+                <td>{{ teacher.user.first_name }}</td>
+                <td>{{ teacher.user.last_name }}</td>
+                <td>{{ teacher.user.username }}</td>
+                <td>{{ teacher.age }}</td>
+                <td>{{ teacher.address }}</td>
+                <td>{{ teacher.contact_number }}</td>
+                <td>{{ teacher.course.course_name }}</td>
+                <td><img src="{{ teacher.photo.url }}" alt="{{ teacher.user.username }} photo" style="max-width: 100px;"></td>
+                <td>|
+                    <a href="{% url 'deleteteacher' teacher.id %}">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+
+
+
+
+
+
+
